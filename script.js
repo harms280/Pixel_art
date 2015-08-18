@@ -50,13 +50,16 @@ function createPalette() {
 function createColorPicker() {
 	var tile = document.createElement('div');
 	tile.style.width = "10%";
-	tile.style.height = "2%";
-	tile.style.float = "left";
-	tile.classList.add('picker');
+	tile.style.height = "5%";
+	tile.style.clear = "both";
+	tile.style.position ="block";
+	tile.style.margin = "2em auto";
 	tile.innerHTML = "<input id='background-color' type='color'/>";
-	tile.addEventListener('click',function() {
-			color = document.getElementById('background-color').value;
-		})
+	tile.addEventListener('click',function addListenerPicker() {
+	for (var i = 0; i < pixel.length; i++) {
+		pixel[i].addEventListener('click',function() {this.style.background = document.getElementById("background-color").value});
+	}
+	});
 	body.appendChild(tile);
 }
 
@@ -79,6 +82,7 @@ var pixel = document.getElementsByTagName('div');
 
 function addListener() {
 	for (var i = 0; i < pixel.length; i++) {
-		pixel[i].addEventListener('click',function() {this.style.background = document.getElementById('background-color').value});
+		pixel[i].addEventListener('click',function() {this.style.background = color});
 	}
 }
+
